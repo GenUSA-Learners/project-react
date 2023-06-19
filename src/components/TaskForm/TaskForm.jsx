@@ -88,7 +88,6 @@ const TaskForm = () => {
           label="Task Name"
           name="name"
           placeholder="What is the name of the task"
-          // required
           error={
             verified &&
             !success &&
@@ -116,7 +115,6 @@ const TaskForm = () => {
             label="Assigned To"
             name="assigned"
             placeholder="Joe Schmoe"
-            // required
             error={
               verified &&
               !success &&
