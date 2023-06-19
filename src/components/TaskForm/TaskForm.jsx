@@ -43,20 +43,30 @@ const TaskForm = () => {
     if (Object.values({ name, assigned }).filter((val) => val).length === 2) {
       setLoading(true);
       setTimeout(() => {
-        setSuccess(true);
-        console.log({ ...taskObj, dueDate: taskObj.dueDate.toDateString() });
+        console.log({
+          ...taskObj,
+          ...(taskObj.dueDate
+            ? { dueDate: taskObj.dueDate.toDateString() }
+            : {}),
+        });
         // Handle submit logic
         setTaskObj({ ...initialFormState });
         setLoading(false);
+        setSuccess(true);
+        setVerified(true);
       }, 1000);
     } else {
       setSuccess(false);
+      setVerified(true);
     }
-    setVerified(true);
   }, [taskObj]);
 
   useEffect(() => {
-    if (success) setTimeout(() => setSuccess(false), 2000);
+    if (success)
+      setTimeout(() => {
+        setSuccess(false);
+        setVerified(false);
+      }, 3000);
   }, [success]);
 
   return (
@@ -105,7 +115,7 @@ const TaskForm = () => {
             control={Input}
             label="Assigned To"
             name="assigned"
-            placeholder="joe@schmoe.com"
+            placeholder="Joe Schmoe"
             // required
             error={
               verified &&
@@ -127,6 +137,7 @@ const TaskForm = () => {
         </Form.Group>
         <Button id="Add Task" content="Add Task" type="submit" />
         <Message
+          className="success-message"
           success
           header="Form Completed"
           content="You're all signed up for the newsletter"

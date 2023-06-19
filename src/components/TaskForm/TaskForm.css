@@ -1,6 +1,11 @@
 .task-form {
+  min-height: 32em;
   padding: 1rem;
   padding-top: 2em;
+}
+
+.task-form label {
+  text-align: left;
 }
 
 .form-header {
@@ -22,4 +27,8 @@
 
 .react-datepicker-wrapper {
   align-self: end !important;
+}
+
+.success-message {
+  min-height: 5em;
 }
