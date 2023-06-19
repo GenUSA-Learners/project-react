@@ -1,4 +1,4 @@
-.form {
+.task-form {
   padding: 1rem;
   padding-top: 2em;
 }
@@ -10,4 +10,16 @@
 
 .form-header:after {
   color: #353535 !important;
+}
+
+.form-group {
+  margin: 0 0 1em;
+}
+
+.form-group > div:nth-child(2) {
+  flex: 1 0 40% !important;
+}
+
+.react-datepicker-wrapper {
+  align-self: end !important;
 }
