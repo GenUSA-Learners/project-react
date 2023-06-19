@@ -1,0 +1,13 @@
+.form {
+  padding: 1rem;
+  padding-top: 2em;
+}
+
+.form-header {
+  background: #d9d9d9 !important;
+  width: auto !important;
+}
+
+.form-header:after {
+  color: #353535 !important;
+}
