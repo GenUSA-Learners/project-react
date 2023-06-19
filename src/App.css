@@ -1,3 +1,13 @@
 .App {
   text-align: center;
+  background: lightslategray;
 }
+
+.app-header {
+  color: white !important;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
