@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Advertisement,
   Button,
@@ -54,6 +54,10 @@ const TaskForm = () => {
     }
     setVerified(true);
   }, [taskObj]);
+
+  useEffect(() => {
+    if (success) setTimeout(() => setSuccess(false), 2000);
+  }, [success]);
 
   return (
     <>
