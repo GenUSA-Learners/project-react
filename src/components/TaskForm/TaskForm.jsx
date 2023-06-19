@@ -12,27 +12,43 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./TaskForm.css";
 
+const initialFormState = {
+  name: "",
+  description: "",
+  assigned: "",
+  dueDate: null,
+};
+
 const TaskForm = () => {
-  const [taskObj, setTaskObj] = useState({});
-  const [dueDate, setDueDate] = useState(null);
+  const [taskObj, setTaskObj] = useState({ ...initialFormState });
+  const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const onChange = (date) => setDueDate(date);
+  const onChange = (date) => {
+    setTaskObj({ ...taskObj, dueDate: date });
+  };
 
   const handleChange = useCallback(
     (e) => {
       setTaskObj({ ...taskObj, [e.target.name]: e.target.value });
       setVerified(false);
+      setSuccess(false);
     },
     [taskObj]
   );
 
   const handleSubmit = useCallback(() => {
     const { name, assigned } = taskObj;
-    console.log(name, assigned);
     if (Object.values({ name, assigned }).filter((val) => val).length === 2) {
-      setSuccess(true);
+      setLoading(true);
+      setTimeout(() => {
+        setSuccess(true);
+        console.log({ ...taskObj, dueDate: taskObj.dueDate.toDateString() });
+        // Handle submit logic
+        setTaskObj({ ...initialFormState });
+        setLoading(false);
+      }, 1000);
     } else {
       setSuccess(false);
     }
@@ -48,7 +64,7 @@ const TaskForm = () => {
       />
       <Form
         className="task-form"
-        loading={false}
+        loading={loading}
         success={verified && success}
         onSubmit={handleSubmit}
       >
@@ -67,6 +83,7 @@ const TaskForm = () => {
               pointing: "below",
             }
           }
+          value={taskObj.name}
           onChange={handleChange}
         />
         <Form.Field
@@ -75,6 +92,7 @@ const TaskForm = () => {
           label="Task Description"
           name="description"
           placeholder="Add a description"
+          value={taskObj.description}
           onChange={handleChange}
         />
         <Form.Group className="form-group" widths="equal">
@@ -93,12 +111,14 @@ const TaskForm = () => {
                 pointing: "below",
               }
             }
+            value={taskObj.assigned}
             onChange={handleChange}
           />
           <DatePicker
             className="form-datepicker"
             onChange={onChange}
-            placeholderText={dueDate || "Due Date"}
+            placeholderText={!taskObj.dueDate ? "Due Date" : undefined}
+            selected={taskObj.dueDate}
           />
         </Form.Group>
         <Button id="Add Task" content="Add Task" type="submit" />
