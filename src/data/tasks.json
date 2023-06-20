@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Take out the trash",
     "description": "Take out the trash to the front of the house",
-    "assignedTo": "Nick",
+    "assigned": "Nick",
     "dueDate": "2020-09-20",
     "status": "TODO"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "name": "Cook Dinner",
     "description": "Prepare a healthy serving of pancakes for the family tonight",
-    "assignedTo": "Nick",
+    "assigned": "Nick",
     "dueDate": "2020-09-20",
     "status": "TODO"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "name": "Grocery Shopping",
     "description": "Pick up groceries from the store",
-    "assignedTo": "Jane",
+    "assigned": "Jane",
     "dueDate": "2020-09-27",
     "status": "DONE"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "name": "Pick up sticks",
     "description": "Pick up sticks from the yard",
-    "assignedTo": "John",
+    "assigned": "John",
     "dueDate": "2020-10-20",
     "status": "TODO"
   }
