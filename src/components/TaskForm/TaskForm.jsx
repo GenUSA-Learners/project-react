@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 import {
   Advertisement,
   Button,
@@ -6,20 +6,20 @@ import {
   Input,
   Message,
   TextArea,
-} from "semantic-ui-react";
-import DatePicker from "react-datepicker";
+} from 'semantic-ui-react';
+import DatePicker from 'react-datepicker';
 
-import "react-datepicker/dist/react-datepicker.css";
-import "./TaskForm.css";
+import 'react-datepicker/dist/react-datepicker.css';
+import './TaskForm.css';
 
 const initialFormState = {
-  name: "",
-  description: "",
-  assigned: "",
+  name: '',
+  description: '',
+  assigned: '',
   dueDate: null,
 };
 
-const TaskForm = () => {
+const TaskForm = ({ handleAddTask }) => {
   const [taskObj, setTaskObj] = useState({ ...initialFormState });
   const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState(false);
@@ -43,13 +43,10 @@ const TaskForm = () => {
     if (Object.values({ name, assigned }).filter((val) => val).length === 2) {
       setLoading(true);
       setTimeout(() => {
-        console.log({
+        handleAddTask({
           ...taskObj,
-          ...(taskObj.dueDate
-            ? { dueDate: taskObj.dueDate.toDateString() }
-            : {}),
+          dueDate: taskObj.dueDate && taskObj.dueDate.toDateString(),
         });
-        // Handle submit logic
         setTaskObj({ ...initialFormState });
         setLoading(false);
         setSuccess(true);
@@ -92,8 +89,8 @@ const TaskForm = () => {
             verified &&
             !success &&
             !taskObj.name && {
-              content: "Please add a valid task name",
-              pointing: "below",
+              content: 'Please add a valid task name',
+              pointing: 'below',
             }
           }
           value={taskObj.name}
@@ -119,8 +116,8 @@ const TaskForm = () => {
               verified &&
               !success &&
               !taskObj.assigned && {
-                content: "Please assign the task to a person",
-                pointing: "below",
+                content: 'Please assign the task to a person',
+                pointing: 'below',
               }
             }
             value={taskObj.assigned}
@@ -129,7 +126,7 @@ const TaskForm = () => {
           <DatePicker
             className="form-datepicker"
             onChange={onChange}
-            placeholderText={!taskObj.dueDate ? "Due Date" : undefined}
+            placeholderText={!taskObj.dueDate ? 'Due Date' : undefined}
             selected={taskObj.dueDate}
           />
         </Form.Group>

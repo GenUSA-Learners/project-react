@@ -4,6 +4,7 @@ import { Button, Card, Label, Icon } from 'semantic-ui-react';
 import './TaskCard.css';
 
 const TaskCard = ({
+  id,
   name,
   description,
   assigned,
@@ -39,7 +40,7 @@ const TaskCard = ({
               basic
               className="action-btn"
               color="green"
-              onClick={handleClickDone}
+              onClick={() => handleClickDone(id)}
             >
               Mark as Done
             </Button>
@@ -48,7 +49,7 @@ const TaskCard = ({
             basic
             className="action-btn"
             color="red"
-            onClick={handleClickDelete}
+            onClick={() => handleClickDelete(id)}
           >
             Delete
           </Button>
