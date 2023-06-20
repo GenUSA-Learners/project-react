@@ -1,4 +1,23 @@
+.task-card {
+  min-height: 15rem;
+  text-align: left;
+}
+
+.task-label {
+  margin-top: -0.4rem !important;
+}
+
+.task-dueDate {
+  margin-top: 2rem;
+}
+
 .actions-container {
   display: flex;
   justify-content: space-between;
+}
+
+.action-btn {
+  border-radius: 0.28571429rem !important;
+  flex: 0 0 45% !important;
+  margin: 0.5rem !important;
 }

@@ -1,6 +1,9 @@
-import { Container, Header } from "semantic-ui-react";
+import { Card, Container, Header } from "semantic-ui-react";
 
+import TaskCard from "./components/TaskCard";
 import TaskForm from "./components/TaskForm";
+
+import data from './data/tasks.json'
 
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
@@ -13,6 +16,11 @@ function App() {
       </Header>
       <Container className="form-container">
         <TaskForm />
+      </Container>
+      <Container className="cards-container">
+        <Card.Group>
+          <TaskCard {...data[0]} />
+        </Card.Group>
       </Container>
     </div>
   );
