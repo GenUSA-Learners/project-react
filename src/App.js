@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Card, Container, Header } from "semantic-ui-react";
 
 import TaskCard from "./components/TaskCard";
@@ -9,6 +10,8 @@ import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 
 function App() {
+const [tasks, setTasks] = useState(data)
+
   return (
     <div className="App">
       <Header className="app-header" size="huge">
@@ -18,8 +21,8 @@ function App() {
         <TaskForm />
       </Container>
       <Container className="cards-container">
-        <Card.Group>
-          <TaskCard {...data[0]} />
+        <Card.Group className='task-group'>
+          {tasks.map(task => (<TaskCard {...task} />))}
         </Card.Group>
       </Container>
     </div>

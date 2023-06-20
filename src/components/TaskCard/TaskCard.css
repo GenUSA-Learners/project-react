@@ -7,6 +7,10 @@
   margin-top: -0.4rem !important;
 }
 
+.task-description {
+  height: 4em;
+}
+
 .task-dueDate {
   margin-top: 2rem;
 }
