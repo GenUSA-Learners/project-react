@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useState } from 'react';
 import { Button, Card, Label, Icon } from 'semantic-ui-react';
 
 import './TaskCard.css';
@@ -17,9 +16,7 @@ const TaskCard = ({
     <Card className="task-card">
       <Card.Content>
         <Label
-          className={`task-label right${
-            status === 'TODO' ? ' todo' : ' success'
-          }`}
+          className={`task-label right${status === 'TODO' ? ' todo' : ' done'}`}
         >
           <Icon name={status === 'TODO' ? 'list' : 'check'} size="small" />
           {status}

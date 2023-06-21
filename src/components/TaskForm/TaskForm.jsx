@@ -17,6 +17,7 @@ const initialFormState = {
   description: '',
   assigned: '',
   dueDate: null,
+  status: 'TODO',
 };
 
 const TaskForm = ({ handleAddTask }) => {
@@ -130,12 +131,12 @@ const TaskForm = ({ handleAddTask }) => {
             selected={taskObj.dueDate}
           />
         </Form.Group>
-        <Button id="Add Task" content="Add Task" type="submit" />
+        <Button id="Add Task" content="Add Task" type="submit" primary />
         <Message
           className="success-message"
           success
           header="Form Completed"
-          content="You're all signed up for the newsletter"
+          content="You're task has been added!"
         />
       </Form>
     </>
